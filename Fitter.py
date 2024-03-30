@@ -16,8 +16,7 @@ class Fit:
         self.result_parameters = None
 
     def fit_data(self):
-#         minimizer = Minimizer(self.model_func, self.params, fcn_args=(self.data,))
-#         self.result = minimizer.minimize(method=method)
+
         
         minimizer = Minimizer(self.model_func, self.params_population, fcn_args = (self.data,)) 
         if self.method_global == 'leastsq':
@@ -49,7 +48,6 @@ def NegLogLikelihood(values, outcomes, TD50, m):
 
         negLL=-np.sum(LL)
 
-        # print ('Iteration No:',self.Iter,"LL:",-negLL,TD50,m,n)
         return negLL
 
 def CalcNTCP(value,TD50,m):

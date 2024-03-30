@@ -43,8 +43,6 @@ def vuong(m1, m2, dof1 = 2, dof2 = 2):
     if not np.all(p1.columns == p2.columns):
         raise ValueError("Models appear to have different values on dependent variables.")
     
-#     which_col = np.where(m1y == p1.columns)[0]
-#     which_col2 = np.where(m2y == p2.columns)[0]
     
     which_col = [list(p1.columns).index(str(y))  for y in m1y]
     which_col2 = [list(p1.columns).index(str(y))  for y in m2y]
@@ -90,10 +88,7 @@ def vuong(m1, m2, dof1 = 2, dof2 = 2):
     numsum = np.sum(num, axis=0)
     v = numsum / (s * np.sqrt(neff))  # Vuong
     
-#     v = pd.DataFrame(v)
-#     v.columns = ["Vuong z-statistic"]
-#     v['Test'] = ["Raw","AIC-corrected","BIC-corrected"]
-#     v = v[["Test", "Vuong z-statistic"]]
+
     # Determine p-values
     pval = np.zeros(3)
     msg = [""] * 3
